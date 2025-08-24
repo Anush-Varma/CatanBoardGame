@@ -1,0 +1,51 @@
+# Ignore Visual Studio temporary files, build results, and user-specific files
+.vs/
+
+# Build folders
+[Bb]in/
+[Oo]bj/
+**/bin/
+**/obj/
+
+# Visual Studio user files
+*.user
+*.suo
+*.userosscache
+*.userprefs
+*.sln.docstates
+
+# MonoGame Content pipeline outputs
+Content/bin/
+*.mgcb.user
+
+# NuGet and packaging
+*.nupkg
+packages/
+.nuget/packages/
+project.assets.json
+project.nuget.cache
+
+# Rider
+.idea/
+*.sln.iml
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs, test results, and coverage
+*.log
+TestResults/
+coverage/
+
+# Generated runtime and debug files (covered by bin/obj but added for safety)
+*.dll
+*.exe
+*.pdb
+*.runtimeconfig.json
+*.deps.json
+
+# Misc
+*.vsix
+
+
