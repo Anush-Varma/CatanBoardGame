@@ -1,5 +1,13 @@
-# Ignore Visual Studio temporary files, build results, and user-specific files
+# Visual Studio / IDE
 .vs/
+*.user
+*.suo
+*.userosscache
+*.userprefs
+*.sln.docstates
+
+# VSCode workspace (remove this line if you want to keep .vscode settings)
+.vscode/
 
 # Build folders
 [Bb]in/
@@ -7,18 +15,14 @@
 **/bin/
 **/obj/
 
-# Visual Studio user files
-*.user
-*.suo
-*.userosscache
-*.userprefs
-*.sln.docstates
-
-# MonoGame Content pipeline outputs
+# MonoGame Content pipeline outputs (generated .xnb files)
 Content/bin/
+Content/obj/
+**/Content/bin/
+**/Content/obj/
 *.mgcb.user
 
-# NuGet and packaging
+# NuGet / packaging / tooling
 *.nupkg
 packages/
 .nuget/packages/
@@ -38,14 +42,10 @@ Thumbs.db
 TestResults/
 coverage/
 
-# Generated runtime and debug files (covered by bin/obj but added for safety)
-*.dll
-*.exe
+# Generated runtime/debug files (already covered by bin/obj but added for safety)
 *.pdb
 *.runtimeconfig.json
 *.deps.json
 
 # Misc
 *.vsix
-
-
