@@ -46,7 +46,9 @@ public class Game1 : Core
     {
         GraphicsDevice.Clear(Color.CornflowerBlue);
         SpriteBatch.Begin();
-        SpriteBatch.Draw(_test, Vector2.Zero, Color.White);
+        SpriteBatch.Draw(_test, new Vector2(    // position
+            (Window.ClientBounds.Width * 0.5f) - (_test.Width * 0.5f),
+            (Window.ClientBounds.Height * 0.5f) - (_test.Height * 0.5f)), null, Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
         SpriteBatch.End();
 
         // TODO: Add your drawing code here
