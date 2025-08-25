@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MonoGameLibrary;
@@ -46,10 +47,13 @@ public class Game1 : Core
     {
         GraphicsDevice.Clear(Color.CornflowerBlue);
         SpriteBatch.Begin();
-        SpriteBatch.Draw(_test, new Vector2(    // position
-            (Window.ClientBounds.Width * 0.5f) - (_test.Width * 0.5f),
-            (Window.ClientBounds.Height * 0.5f) - (_test.Height * 0.5f)), null, Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+        SpriteBatch.Draw(_test, new Vector2(Window.ClientBounds.Width * 0.5f, Window.ClientBounds.Height * 0.5f), null, Color.White, 0.0f, new Vector2(_test.Width, _test.Height) * 0.5f, 0.5f, SpriteEffects.None, 0.0f);
+
+        SpriteBatch.Draw(_test, new Vector2(Window.ClientBounds.Width * 0.5f, (Window.ClientBounds.Height * 0.5f) + _test.Height * 0.5f), null, Color.White, 0.0f, new Vector2(_test.Width, _test.Height) * 0.5f, 0.5f, SpriteEffects.None, 0.0f);
+
+
         SpriteBatch.End();
+
 
         // TODO: Add your drawing code here
 

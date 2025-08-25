@@ -1,17 +1,18 @@
 public class HexTile
 {
-    private int _q; 
-    private int _r; 
-    private int _s;
-    private TileType _tileType;
-    
+    public int Q { get; set; }
+    public int R { get; set; }
+    public TileType TileType { get; set; }
 
-    public HexTile(int q, int r, int s, TileType tileType)
+    public int DiceNumber { get; set; }
+
+
+    public HexTile(int q, int r, TileType tileType, int diceNumber)
     {
-        _q = q;
-        _r = r;
-        _s = s;
-        _tileType = tileType;
+        Q = q;
+        R = r;
+        TileType = tileType;
+        DiceNumber = diceNumber;
     }
     
 }

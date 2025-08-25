@@ -1,12 +1,13 @@
+using System.Collections.Generic;
+
 public class HexBoard
 {
-    private int _width;
-    private int _height;
+    private Dictionary<(int, int), HexTile> tiles = new Dictionary<(int, int), HexTile>();
 
-    public HexBoard(int width, int height)
+    public void AddTile(HexTile tile)
     {
-        _width = width;
-        _height = height;
+        tiles[(tile.Q, tile.R)] = tile;
     }
+
 
 }
