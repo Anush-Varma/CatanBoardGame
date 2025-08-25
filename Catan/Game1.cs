@@ -7,8 +7,7 @@ namespace Catan;
 
 public class Game1 : Core
 {
-    private GraphicsDeviceManager _graphics;
-    private SpriteBatch _spriteBatch;
+    private Texture2D _test;
 
     public Game1() : base("Catan", 1280, 720, false)
     {
@@ -29,7 +28,8 @@ public class Game1 : Core
     {
 
         // TODO: use this.Content to load your game content here
-        base.LoadContent(); // Should Never be removed
+        // base.LoadContent(); // Should Never be removed
+        _test = Content.Load<Texture2D>("images/WheatHex");
     }
 
     protected override void Update(GameTime gameTime)
@@ -44,7 +44,10 @@ public class Game1 : Core
 
     protected override void Draw(GameTime gameTime)
     {
-        GraphicsDevice.Clear(Color.Magenta);
+        GraphicsDevice.Clear(Color.CornflowerBlue);
+        SpriteBatch.Begin();
+        SpriteBatch.Draw(_test, Vector2.Zero, Color.White);
+        SpriteBatch.End();
 
         // TODO: Add your drawing code here
 
