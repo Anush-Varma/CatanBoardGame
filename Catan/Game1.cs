@@ -9,6 +9,14 @@ namespace Catan;
 public class Game1 : Core
 {
     private Texture2D _test;
+    private Texture2D _WheatHex;
+    private Texture2D _WoodHex;
+    private Texture2D _BrickHex;
+    private Texture2D _SheepHex;
+    private Texture2D _StoneHex;
+    private Texture2D _VolcanoHex;
+    private Texture2D _InhabitableHex;
+    private Texture2D _OceanHex;
 
 
     private float _hexScale = 0.5f;
@@ -25,7 +33,7 @@ public class Game1 : Core
 
 
     private HexBoard _board;
-    private int _boardSize = 3;
+    private int _boardSize = 2;
     private bool _boardGenerated = false;
 
     public Game1() : base("Catan", 1250, 700, false)
@@ -49,24 +57,31 @@ public class Game1 : Core
     /// </summary>
     protected override void LoadContent()
     {
-
-        // TODO: use this.Content to load your game content here
         base.LoadContent(); // Should Never be removed
-        _test = Content.Load<Texture2D>("images/WheatHex");
 
-        _hexTextureHeight = _test.Height;
-        _hexTextureWidth = _test.Width;
+        _test = Content.Load<Texture2D>("images/OceanHex");
+
+        _WheatHex = Content.Load<Texture2D>("images/WheatHex");
+        _WoodHex = Content.Load<Texture2D>("images/WoodHex");
+        _BrickHex = Content.Load<Texture2D>("images/BrickHex");
+        _SheepHex = Content.Load<Texture2D>("images/SheepHex");
+        _StoneHex = Content.Load<Texture2D>("images/StoneHex");
+        _VolcanoHex = Content.Load<Texture2D>("images/VolcanoHex");
+        _InhabitableHex = Content.Load<Texture2D>("images/InhabitableHex");
+        _OceanHex = Content.Load<Texture2D>("images/OceanHex");
+
+        _hexTextureHeight = _VolcanoHex.Height;
+        _hexTextureWidth = _VolcanoHex.Width;
 
         _hexOrigin = new Vector2(_hexTextureWidth, _hexTextureHeight) * 0.5f;
 
         _scaledHalfWidth = _hexTextureWidth * _hexScale;
         _scaledHalfHeight = _hexTextureHeight * _hexScale;
 
-        _tileWidthCorrection = 29f;
-        _diagonalTileHeightCorrection = 4f;
-        _verticalTileHeightCorrection = 8f;
+        _tileWidthCorrection = 30f;
+        _diagonalTileHeightCorrection = 20f;
+        _verticalTileHeightCorrection = 40f;
         _halfHexHeight = _scaledHalfHeight * 0.5f;
-
 
         _board = new HexBoard();
 
@@ -108,10 +123,10 @@ public class Game1 : Core
 
         foreach (var tile in _board.Tiles.Values)
         {
-            float depth = 0.5f + (tile.Position.Y / Window.ClientBounds.Height) * 0.5f;
+            float depth = 0.5f + tile.Position.Y / Window.ClientBounds.Height * 0.5f;
 
             depth = Math.Clamp(depth, 0f, 1f);
-            DrawHex(_test, tile.Position, depth);
+            DrawHex(_SheepHex, tile.Position, depth);
         }
 
         SpriteBatch.End();
