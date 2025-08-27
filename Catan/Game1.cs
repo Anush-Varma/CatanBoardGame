@@ -28,10 +28,7 @@ public class Game1 : Core
     private int _boardSize = 3;
     private bool _boardGenerated = false;
 
-
-
-
-    public Game1() : base("Catan", 1280, 720, false)
+    public Game1() : base("Catan", 1250, 700, false)
     {
 
     }
@@ -39,8 +36,12 @@ public class Game1 : Core
     protected override void Initialize()
     {
         // TODO: Add your initialization logic here
-
         base.Initialize(); // Should Never be removed
+        Window.ClientSizeChanged += (sender, e) =>
+        {
+            _boardGenerated = false;
+        };
+
     }
 
     /// <summary>

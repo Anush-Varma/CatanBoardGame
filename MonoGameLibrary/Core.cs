@@ -60,6 +60,7 @@ public class Core : Game
         Graphics.PreferredBackBufferWidth = width;
         Graphics.PreferredBackBufferHeight = height;
         Graphics.IsFullScreen = fullScreen;
+        Window.AllowUserResizing = true;
 
         // Apply the graphic presentation changes.
         Graphics.ApplyChanges();
