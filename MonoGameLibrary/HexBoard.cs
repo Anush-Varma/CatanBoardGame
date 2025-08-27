@@ -10,7 +10,6 @@ public class HexBoard
         Tiles[(tile.Q, tile.R)] = tile;
     }
 
-
     public void Generate(int size, Vector2 center, float textureWidth,
                 float textureHeight, float scale, float tileWidthCorrection,
                 float diagonalTileHeightCorrection, float verticalTileHeightCorrection)
@@ -43,8 +42,6 @@ public class HexBoard
 
             }
         }
-
-
 
 
     }

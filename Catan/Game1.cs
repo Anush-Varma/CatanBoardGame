@@ -87,7 +87,6 @@ public class Game1 : Core
     }
 
 
-
     protected override void Draw(GameTime gameTime)
     {
         GraphicsDevice.Clear(Color.CornflowerBlue);
@@ -115,26 +114,6 @@ public class Game1 : Core
         }
 
         SpriteBatch.End();
-
-
-        // var centreHex = _boardCenter;
-        // var topHex = _boardCenter - new Vector2(0, _scaledHalfHeight - _verticalTileHeightCorrection);
-        // var bottomHex = _boardCenter + new Vector2(0, _scaledHalfHeight - _verticalTileHeightCorrection);
-        // var topLeftHex = _boardCenter - new Vector2(_scaledHalfWidth - _tileWidthCorrection, _halfHexHeight - _diagonalTileHeightCorrection);
-        // var topRightHex = _boardCenter + new Vector2(_scaledHalfWidth - _tileWidthCorrection, -_halfHexHeight + _diagonalTileHeightCorrection);
-        // var bottomLeftHex = _boardCenter - new Vector2(_scaledHalfWidth - _tileWidthCorrection, -_halfHexHeight + _diagonalTileHeightCorrection);
-        // var bottomRightHex = _boardCenter + new Vector2(_scaledHalfWidth - _tileWidthCorrection, _halfHexHeight - _diagonalTileHeightCorrection);
-
-        // DrawHex(_test, centreHex, 0.7f);
-        // DrawHex(_test, topHex, 0.3f);
-        // DrawHex(_test, bottomHex, 1.0f);
-        // DrawHex(_test, topLeftHex, 0.5f);
-        // DrawHex(_test, topRightHex, 0.5f);
-        // DrawHex(_test, bottomLeftHex, 0.8f);
-        // DrawHex(_test, bottomRightHex, 0.8f);
-
-
-        // SpriteBatch.End();
 
 
         // TODO: Add your drawing code here
