@@ -16,17 +16,17 @@ public class Game1 : Core
     private Vector2 _hexOrigin;
     private float _scaledHalfWidth;
     private float _scaledHalfHeight;
-
     private float _tileWidthCorrection;
-
     private float _diagonalTileHeightCorrection;
-
     private float _verticalTileHeightCorrection;
-
     private float _halfHexHeight;
-
     private float _hexTextureWidth;
     private float _hexTextureHeight;
+
+
+    private HexBoard _board;
+    private int _boardSize = 3;
+    private bool _boardGenerated = false;
 
 
 
@@ -66,6 +66,9 @@ public class Game1 : Core
         _verticalTileHeightCorrection = 8f;
         _halfHexHeight = _scaledHalfHeight * 0.5f;
 
+
+        _board = new HexBoard();
+
     }
 
     protected override void Update(GameTime gameTime)
@@ -93,35 +96,45 @@ public class Game1 : Core
         _boardCenter = new Vector2(Window.ClientBounds.Width * 0.5f, Window.ClientBounds.Height * 0.5f);
 
 
+        if (!_boardGenerated)
+        {
+            _board.Generate(_boardSize, _boardCenter, _hexTextureWidth, _hexTextureHeight, _hexScale, _tileWidthCorrection, _diagonalTileHeightCorrection, _verticalTileHeightCorrection);
+
+            _boardGenerated = true;
+        }
+
         SpriteBatch.Begin(sortMode: SpriteSortMode.FrontToBack);
 
-        var centreHex = _boardCenter;
-        var topHex = _boardCenter - new Vector2(0, _scaledHalfHeight - _verticalTileHeightCorrection);
-        var bottomHex = _boardCenter + new Vector2(0, _scaledHalfHeight - _verticalTileHeightCorrection);
-        var topLeftHex = _boardCenter - new Vector2(_scaledHalfWidth - _tileWidthCorrection, _halfHexHeight - _diagonalTileHeightCorrection);
-        var topRightHex = _boardCenter + new Vector2(_scaledHalfWidth - _tileWidthCorrection, -_halfHexHeight + _diagonalTileHeightCorrection);
-        var bottomLeftHex = _boardCenter - new Vector2(_scaledHalfWidth - _tileWidthCorrection, -_halfHexHeight + _diagonalTileHeightCorrection);
-        var bottomRightHex = _boardCenter + new Vector2(_scaledHalfWidth - _tileWidthCorrection, _halfHexHeight - _diagonalTileHeightCorrection);
 
-        DrawHex(_test, centreHex, 0.7f);
-        DrawHex(_test, topHex, 0.3f);
-        DrawHex(_test, bottomHex, 1.0f);
-        DrawHex(_test, topLeftHex, 0.5f);
-        DrawHex(_test, topRightHex, 0.5f);
-        DrawHex(_test, bottomLeftHex, 0.8f);
-        DrawHex(_test, bottomRightHex, 0.8f);
+        foreach (var tile in _board.Tiles.Values)
+        {
+            float depth = 0.5f + (tile.Position.Y / Window.ClientBounds.Height) * 0.5f;
 
-
-        // SpriteBatch.Draw(_test, new Vector2(Window.ClientBounds.Width * 0.5f, (Window.ClientBounds.Height * 0.5f) + _test.Height * 0.5f - 8), null, Color.White, 0.0f, new Vector2(_test.Width, _test.Height) * 0.5f, 0.5f, SpriteEffects.None, 0.1f);
-
-        // SpriteBatch.Draw(_test, new Vector2(Window.ClientBounds.Width * 0.5f, Window.ClientBounds.Height * 0.5f), null, Color.White, 0.0f, new Vector2(_test.Width, _test.Height) * 0.5f, 0.5f, SpriteEffects.None, 1.0f);
-
-        // SpriteBatch.Draw(_test, new Vector2((Window.ClientBounds.Width * 0.5f) + (_test.Width * 0.5f) - 29, (Window.ClientBounds.Height * 0.5f) - _test.Height * 0.25f + 4), null, Color.White, 0.0f, new Vector2(_test.Width, _test.Height) * 0.5f, 0.5f, SpriteEffects.None, 0.2f);
-
-        // SpriteBatch.Draw(_test, new Vector2((Window.ClientBounds.Width * 0.5f) + ((_test.Width * 0.5f) - 29) * 2, Window.ClientBounds.Height * 0.5f), null, Color.White, 0.0f, new Vector2(_test.Width, _test.Height) * 0.5f, 0.5f, SpriteEffects.None, 1.0f);
-
+            depth = Math.Clamp(depth, 0f, 1f);
+            DrawHex(_test, tile.Position, depth);
+        }
 
         SpriteBatch.End();
+
+
+        // var centreHex = _boardCenter;
+        // var topHex = _boardCenter - new Vector2(0, _scaledHalfHeight - _verticalTileHeightCorrection);
+        // var bottomHex = _boardCenter + new Vector2(0, _scaledHalfHeight - _verticalTileHeightCorrection);
+        // var topLeftHex = _boardCenter - new Vector2(_scaledHalfWidth - _tileWidthCorrection, _halfHexHeight - _diagonalTileHeightCorrection);
+        // var topRightHex = _boardCenter + new Vector2(_scaledHalfWidth - _tileWidthCorrection, -_halfHexHeight + _diagonalTileHeightCorrection);
+        // var bottomLeftHex = _boardCenter - new Vector2(_scaledHalfWidth - _tileWidthCorrection, -_halfHexHeight + _diagonalTileHeightCorrection);
+        // var bottomRightHex = _boardCenter + new Vector2(_scaledHalfWidth - _tileWidthCorrection, _halfHexHeight - _diagonalTileHeightCorrection);
+
+        // DrawHex(_test, centreHex, 0.7f);
+        // DrawHex(_test, topHex, 0.3f);
+        // DrawHex(_test, bottomHex, 1.0f);
+        // DrawHex(_test, topLeftHex, 0.5f);
+        // DrawHex(_test, topRightHex, 0.5f);
+        // DrawHex(_test, bottomLeftHex, 0.8f);
+        // DrawHex(_test, bottomRightHex, 0.8f);
+
+
+        // SpriteBatch.End();
 
 
         // TODO: Add your drawing code here
