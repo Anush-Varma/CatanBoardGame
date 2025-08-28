@@ -33,7 +33,7 @@ public class Game1 : Core
 
 
     private HexBoard _board;
-    private int _boardSize = 2;
+    private int _boardSize = 3; // default board size
     private bool _boardGenerated = false;
 
     public Game1() : base("Catan", 1250, 700, false)
@@ -126,7 +126,24 @@ public class Game1 : Core
             float depth = 0.5f + tile.Position.Y / Window.ClientBounds.Height * 0.5f;
 
             depth = Math.Clamp(depth, 0f, 1f);
-            DrawHex(_SheepHex, tile.Position, depth);
+
+
+
+            Texture2D hexTexture = tile.TileType switch
+            {
+                TileType.Wheat => _WheatHex,
+                TileType.Wood => _WoodHex,
+                TileType.Brick => _BrickHex,
+                TileType.Sheep => _SheepHex,
+                TileType.Stone => _StoneHex,
+                TileType.Volcano => _VolcanoHex,
+                TileType.Inhabitable => _InhabitableHex,
+                TileType.Ocean => _OceanHex,
+                _ => _OceanHex,
+            };
+
+            DrawHex(hexTexture, tile.Position, depth);
+
         }
 
         SpriteBatch.End();

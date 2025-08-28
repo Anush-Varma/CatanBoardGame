@@ -7,4 +7,5 @@ public enum TileType
     Sheep,
     Wheat,
     Stone,
+    Ocean,
 }
