@@ -34,14 +34,14 @@ public class HexBoard
         // if size is 1 them goes through -1, 0, 1: 2 tiles + 3 tiles + 2 tiles = 7
         for (int q = -size; q <= size; q++)
         {
-            int rMin = System.Math.Max(-size, -q - size);
-            int rMax = System.Math.Min(size, -q + size);
+            int rMin = Math.Max(-size, -q - size);
+            int rMax = Math.Min(size, -q + size);
 
             for (int r = rMin; r <= rMax; r++)
             {
                 var tile = new HexTile(q, r, default(TileType), 0);
                 int s = -q - r;
-                int distance = System.Math.Max(System.Math.Max(System.Math.Abs(q), System.Math.Abs(r)), System.Math.Abs(s));
+                int distance = Math.Max(Math.Max(Math.Abs(q), Math.Abs(r)), Math.Abs(s));
 
                 if (distance == size)
                 {
